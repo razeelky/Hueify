@@ -1,4 +1,4 @@
-import { useUser } from '@/context/userCOntext';
+import { useUser } from '@/context/userContext';
 import { Outlet, Navigate } from 'react-router-dom';
 
 export default function PrivateRoute() {

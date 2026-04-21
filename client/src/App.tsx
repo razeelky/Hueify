@@ -10,6 +10,9 @@ import Image from "./pages/Image";
 import CarModel from "./pages/CarModel";
 import ColorHistory from "./pages/HistoryPage";
 import TshirtModel from "./pages/TshirtModel";
+import ShoeModelPage from "./pages/ShoeModel.tsx";
+import HomeModelPage from "./pages/HomeModel.tsx";
+import HelpPage from "./pages/HelpPage.tsx";
 
 const App = () => {
   return (
@@ -21,6 +24,9 @@ const App = () => {
             <Route path="/history" element={<ColorHistory/>}/>
             <Route path="/3d-car" element={<CarModel/>}/>
             <Route path="/3d-tshirt" element={<TshirtModel/>}/>
+            <Route path="/3d-shoe" element={<ShoeModelPage/>}/>
+            <Route path="/3d-home" element={<HomeModelPage/>}/>
+            <Route path="/help" element={<HelpPage/>}/>
           </Route>
           <Route path="/" element={<HomePage />} />
           <Route path="/sign-in" element={<LoginPage />} />

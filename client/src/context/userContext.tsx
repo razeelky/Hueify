@@ -1,3 +1,4 @@
+/* eslint-disable react-refresh/only-export-components */
 import {
   createContext,
   useState,
@@ -13,6 +14,7 @@ interface User {
   firstName: string;
   lastName: string;
   email: string;
+  role?: string;
 }
 
 // Define the context's shape

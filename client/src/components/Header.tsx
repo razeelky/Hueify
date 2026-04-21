@@ -1,9 +1,248 @@
+// import { useUser } from "@/context/userContext";
+// import { Link, useNavigate } from "react-router-dom";
+// import { Button } from "./ui/button";
+// import { Popover, PopoverContent, PopoverTrigger } from "./ui/popover";
+// import { ModeToggle } from "./mode-toggle";
+// import { useTheme } from "./theme-provider";
+
+// const Header = ({ varient }: { varient?: "dark" | "light" }) => {
+//   const { theme } = useTheme();
+//   const { user, logout } = useUser();
+//   const navigate = useNavigate();
+
+//   // Debugging: Check user object
+//   console.log("User object:", user);
+
+//   // Prioritize varient prop if provided, otherwise use theme context
+//   const appliedTheme = varient || theme;
+
+//   const handleSignout = async () => {
+//     try {
+//       const res = await fetch("/api/auth/sign-out", { method: "POST" });
+//       if (res.ok) {
+//         logout();
+//         navigate("/sign-in");
+//       }
+//     } catch (error) {
+//       logout();
+//       navigate("/");
+//       console.log(error);
+//     }
+//   };
+
+//   return (
+//     <header
+//       className={`${
+//         appliedTheme === "light" ? "text-black" : "text-white"
+//       } w-full h-14 px-14 flex items-center justify-between bg-transparent`}
+//     >
+//       <Link to={"/"} className="text-2xl font-semibold">Hueify</Link>
+
+//       <div className="gap-14 flex font-semibold">
+//         <Link className="hover:underline transition-all" to="/">Home</Link>
+//         <Link className="hover:underline transition-all" to="/colors">Colors</Link>
+//         {user && <Link className="hover:underline transition-all" to="/history">History</Link>}
+//         <Link className="hover:underline transition-all" to="/3d-car">3D Car</Link>
+//         <Link className="hover:underline transition-all" to="/3d-tshirt">3D Tshirt</Link>
+//         <Link className="hover:underline transition-all" to="/3d-shoe">3D Shoe</Link>
+//       </div>
+
+//       {user ? (
+//         <Popover>
+//           <PopoverTrigger>
+//             <span className="border-4 border-t-green-600 border-b-purple-600 border-l-pink-700 border-r-yellow-500 cursor-pointer size-11 text-xl rounded-full bg-blue-500 font-semibold flex items-center justify-center antialiased">
+//               {user?.firstName?.[0] || "U"}
+//               {user?.lastName?.[0] || "N"}
+//             </span>
+//           </PopoverTrigger>
+//           <PopoverContent>
+//             <div className="grid gap-4">
+//               <div className="space-y-2">
+//                 <h4 className="font-medium leading-none">Account</h4>
+//                 <p className="text-sm text-muted-foreground">Your Account Details</p>
+//               </div>
+//             </div>
+
+//             <div className="grid gap-2">
+//               <div className="grid grid-cols-2 items-center gap-4">
+//                 <span>First Name</span>
+//                 <p>{user?.firstName || "N/A"}</p>
+//               </div>
+//               <div className="grid grid-cols-2 items-center gap-4">
+//                 <span>Last Name</span>
+//                 <p>{user?.lastName || "N/A"}</p>
+//               </div>
+//               <div className="grid grid-cols-2 items-center gap-4">
+//                 <span>Email</span>
+//                 <p className="line-clamp-1">{user?.email || "N/A"}</p>
+//               </div>
+//               <div className="grid grid-cols-2 items-center gap-4">
+//                 <Button variant={"outline"} onClick={() => handleSignout()}>
+//                   Log Out
+//                 </Button>
+//                 <ModeToggle />
+//               </div>
+//             </div>
+//           </PopoverContent>
+//         </Popover>
+//       ) : (
+//         <Link className="hover:underline" to={"/sign-in"}>Sign In</Link>
+//       )}
+//     </header>
+//   );
+// };
+
+// export default Header;
+
+// import { useUser } from "@/context/userContext";
+// import { Link, useNavigate } from "react-router-dom";
+// import { Button } from "./ui/button";
+// import { Popover, PopoverContent, PopoverTrigger } from "./ui/popover";
+// import { ModeToggle } from "./mode-toggle";
+// import { useTheme } from "./theme-provider";
+
+// const Header = ({ varient }: { varient?: "dark" | "light" }) => {
+//   const { theme } = useTheme();
+//   const { user, logout } = useUser();
+//   const navigate = useNavigate();
+
+//   // Prioritize varient prop if provided, otherwise use theme context
+//   const appliedTheme = varient || theme;
+
+//   const handleSignout = async () => {
+//     try {
+//       const res = await fetch("/api/auth/sign-out", { method: "POST" });
+//       if (res.ok) {
+//         logout();
+//         navigate("/sign-in");
+//       }
+//     } catch (error) {
+//       logout();
+//       navigate("/");
+//       console.log(error);
+//     }
+//   };
+
+//   return (
+//     <header
+//       className={`${
+//         appliedTheme === "light" ? "text-black" : "text-white"
+//       } w-full h-14 px-14 flex items-center justify-between bg-transparent`}
+//     >
+//       <Link to={"/"} className="text-2xl font-semibold">
+//         Hueify
+//       </Link>
+
+//       <div className="gap-14 flex font-semibold">
+//         <Link className="hover:underline transition-all" to="/">
+//           Home
+//         </Link>
+
+//         {user?.role === "admin" ? (
+//           <Link className="hover:underline transition-all" to="/users">
+//             Users
+//           </Link>
+//         ) : (
+//           <>
+//             <Link className="hover:underline transition-all" to="/colors">
+//               Colors
+//             </Link>
+//             {user && (
+//               <Link className="hover:underline transition-all" to="/history">
+//                 History
+//               </Link>
+//             )}
+
+//             {/* 3D dropdown */}
+//             <Popover>
+//               <PopoverTrigger>
+//                 <span className="cursor-pointer hover:underline transition-all">
+//                   3D
+//                 </span>
+//               </PopoverTrigger>
+//               <PopoverContent>
+//                 <div className="flex flex-col gap-2 p-2">
+//                   <Link className="hover:underline" to="/3d-car">
+//                     3D Car
+//                   </Link>
+//                   <Link className="hover:underline" to="/3d-tshirt">
+//                     3D Tshirt
+//                   </Link>
+//                   <Link className="hover:underline" to="/3d-shoe">
+//                     3D Shoe
+//                   </Link>
+//                   <Link className="hover:underline" to="/3d-home">
+//                     3D Home
+//                   </Link>
+//                 </div>
+//               </PopoverContent>
+//             </Popover>
+
+//             <Link className="hover:underline transition-all" to="/help">
+//               Help & Support
+//             </Link>
+//           </>
+//         )}
+//       </div>
+
+//       {user ? (
+//         <Popover>
+//           <PopoverTrigger>
+//             <span className="border-4 border-t-green-600 border-b-purple-600 border-l-pink-700 border-r-yellow-500 cursor-pointer size-11 text-xl rounded-full bg-blue-500 font-semibold flex items-center justify-center antialiased">
+//               {user?.firstName?.[0] || "?"}
+//               {user?.lastName?.[0] || "?"}
+//             </span>
+//           </PopoverTrigger>
+//           <PopoverContent>
+//             <div className="grid gap-4">
+//               <div className="space-y-2">
+//                 <h4 className="font-medium leading-none">Account</h4>
+//                 <p className="text-sm text-muted-foreground">
+//                   Your Account Details
+//                 </p>
+//               </div>
+//             </div>
+//             <div className="grid gap-2">
+//               <div className="grid grid-cols-2 items-center gap-4">
+//                 <span>First Name</span>
+//                 <p>{user?.firstName || "N/A"}</p>
+//               </div>
+//               <div className="grid grid-cols-2 items-center gap-4">
+//                 <span>Last Name</span>
+//                 <p>{user?.lastName || "N/A"}</p>
+//               </div>
+//               <div className="grid grid-cols-2 items-center gap-4">
+//                 <span>Email</span>
+//                 <p className="line-clamp-1">{user?.email || "N/A"}</p>
+//               </div>
+//               <div className="grid grid-cols-2 items-center gap-4">
+//                 <Button variant={"outline"} onClick={handleSignout}>
+//                   Log Out
+//                 </Button>
+//                 <ModeToggle />
+//               </div>
+//             </div>
+//           </PopoverContent>
+//         </Popover>
+//       ) : (
+//         <Link className="hover:underline" to={"/sign-in"}>
+//           Sign In
+//         </Link>
+//       )}
+//     </header>
+//   );
+// };
+
+// export default Header;
+
 import { useUser } from "@/context/userContext";
 import { Link, useNavigate } from "react-router-dom";
 import { Button } from "./ui/button";
 import { Popover, PopoverContent, PopoverTrigger } from "./ui/popover";
 import { ModeToggle } from "./mode-toggle";
 import { useTheme } from "./theme-provider";
+import logo from "@/assets/logo.jpg";
+
 
 const Header = ({ varient }: { varient?: "dark" | "light" }) => {
   const { theme } = useTheme();
@@ -12,6 +251,14 @@ const Header = ({ varient }: { varient?: "dark" | "light" }) => {
 
   // Prioritize varient prop if provided, otherwise use theme context
   const appliedTheme = varient || theme;
+
+  // Determine the concrete theme to use for styling (resolves system preference)
+  const effectiveTheme =
+    appliedTheme === "system"
+      ? window.matchMedia("(prefers-color-scheme: dark)").matches
+        ? "dark"
+        : "light"
+      : appliedTheme;
 
   const handleSignout = async () => {
     try {
@@ -27,27 +274,82 @@ const Header = ({ varient }: { varient?: "dark" | "light" }) => {
     }
   };
 
-
   return (
     <header
       className={`${
-        appliedTheme === "light" ? "text-black" : "text-white"
+        effectiveTheme === "light" ? "text-black" : "text-white"
       } w-full h-14 px-14 flex items-center justify-between bg-transparent`}
     >
-      <Link to={"/"} className="text-2xl font-semibold">Hueify</Link>
+      {/* <Link to={"/"} className="text-2xl font-semibold">
+      Huiefy
+      </Link> */}
+      <Link to={"/"} className="flex items-center gap-3 text-2xl font-semibold">
+           {/* Logo Image */}
+         <img src={logo} alt="Huiefy Logo" className="h-10 w-auto dark:invert" />
+
+         {/* Brand Name */}
+          <span>Huiefy</span>
+        </Link>
+
+
       <div className="gap-14 flex font-semibold">
-        <Link className="hover:underline transition-all" to="/">Home</Link>
-        <Link className="hover:underline transition-all" to="/colors">Colors</Link>
-        {user && (<Link className="hover:underline transition-all" to="/history">History</Link>)}
-        <Link className="hover:underline transition-all" to="/3d-car">3D Car</Link>
-        <Link className="hover:underline transition-all" to="/3d-tshirt">3D Tshirt</Link>
+        <Link className="hover:underline transition-all" to="/">
+          Home
+        </Link>
+
+        {user?.role === "admin" ? (
+          <Link className="hover:underline transition-all" to="/users">
+            Users
+          </Link>
+        ) : (
+          <>
+            <Link className="hover:underline transition-all" to="/colors">
+              Colors
+            </Link>
+            {user && (
+              <Link className="hover:underline transition-all" to="/history">
+                History
+              </Link>
+            )}
+
+            {/* 3D dropdown */}
+            <Popover>
+              <PopoverTrigger>
+                <span className="cursor-pointer hover:underline transition-all">
+                  3D
+                </span>
+              </PopoverTrigger>
+              <PopoverContent>
+                <div className="flex flex-col gap-2 p-2">
+                  <Link className="hover:underline" to="/3d-car">
+                    3D Car
+                  </Link>
+                  <Link className="hover:underline" to="/3d-tshirt">
+                    3D Tshirt
+                  </Link>
+                  <Link className="hover:underline" to="/3d-shoe">
+                    3D Shoe
+                  </Link>
+                  <Link className="hover:underline" to="/3d-home">
+                    3D Home
+                  </Link>
+                </div>
+              </PopoverContent>
+            </Popover>
+
+            <Link className="hover:underline transition-all" to="/help">
+              Help & Support
+            </Link>
+          </>
+        )}
       </div>
+
       {user ? (
         <Popover>
           <PopoverTrigger>
             <span className="border-4 border-t-green-600 border-b-purple-600 border-l-pink-700 border-r-yellow-500 cursor-pointer size-11 text-xl rounded-full bg-blue-500 font-semibold flex items-center justify-center antialiased">
-              {user?.firstName[0]}
-              {user?.lastName[0]}
+              {user?.firstName?.[0] || "?"}
+              {user?.lastName?.[0] || "?"}
             </span>
           </PopoverTrigger>
           <PopoverContent>
@@ -59,22 +361,21 @@ const Header = ({ varient }: { varient?: "dark" | "light" }) => {
                 </p>
               </div>
             </div>
-
             <div className="grid gap-2">
               <div className="grid grid-cols-2 items-center gap-4">
                 <span>First Name</span>
-                <p>{user.firstName}</p>
+                <p>{user?.firstName || "N/A"}</p>
               </div>
               <div className="grid grid-cols-2 items-center gap-4">
                 <span>Last Name</span>
-                <p>{user.lastName}</p>
+                <p>{user?.lastName || "N/A"}</p>
               </div>
               <div className="grid grid-cols-2 items-center gap-4">
                 <span>Email</span>
-                <p className="line-clamp-1">{user.email}</p>
+                <p className="line-clamp-1">{user?.email || "N/A"}</p>
               </div>
               <div className="grid grid-cols-2 items-center gap-4">
-                <Button variant={"outline"} onClick={() => handleSignout()}>
+                <Button variant={"outline"} onClick={handleSignout}>
                   Log Out
                 </Button>
                 <ModeToggle />
@@ -83,10 +384,13 @@ const Header = ({ varient }: { varient?: "dark" | "light" }) => {
           </PopoverContent>
         </Popover>
       ) : (
-        <Link className="hover:underline" to={"/sign-in"}>Sign In</Link>
+        <Link className="hover:underline" to={"/sign-in"}>
+          Sign In
+        </Link>
       )}
     </header>
   );
 };
 
 export default Header;
+

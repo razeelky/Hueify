@@ -1,6 +1,7 @@
+/* eslint-disable react-refresh/only-export-components */
 import { createContext, useState, useContext } from "react";
 
-const CustomizationContext = createContext({});
+export const CustomizationContext = createContext({});
 
 export const CustomizationProvider = ({
   children,

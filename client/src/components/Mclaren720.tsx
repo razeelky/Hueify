@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React, { useEffect, useMemo } from 'react';
 import { useGLTF } from '@react-three/drei';
 import { TextureLoader } from 'three';
 import { useLoader } from '@react-three/fiber';
@@ -21,19 +21,24 @@ const Model: React.FC<ModelProps> = (props) => {
     materials: Record<string, THREE.Material>;
   };
 
-  if (props.material !== 'null') {
-    const galaxyTexture = useLoader(TextureLoader, props.material as string);
+  const textureUrl =
+    props.material && props.material !== "null"
+      ? (props.material as string)
+      : "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR4nGNgYAAAAAMAASsJTYQAAAAASUVORK5CYII=";
 
-    // Create a new material for the car body with the galaxy texture
-    const galaxyMaterial = useMemo(() => {
-      return new THREE.MeshBasicMaterial({
-        map: galaxyTexture,
-      });
-    }, [galaxyTexture]);
+  const galaxyTexture = useLoader(TextureLoader, textureUrl);
 
-    // Replace the existing 'materials.Paint_Material' with the new 'galaxyMaterial'
-    materials.Paint_Material = galaxyMaterial;
-  }
+  const galaxyMaterial = useMemo(() => {
+    return new THREE.MeshBasicMaterial({
+      map: galaxyTexture,
+    });
+  }, [galaxyTexture]);
+
+  useEffect(() => {
+    if (props.material && props.material !== "null") {
+      materials.Paint_Material = galaxyMaterial;
+    }
+  }, [props.material, galaxyMaterial, materials]);
 
   return (
     <group {...props} dispose={null}>

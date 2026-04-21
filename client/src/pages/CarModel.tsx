@@ -68,7 +68,7 @@ const CarModel: React.FC = () => {
               <fog attach="fog" args={["#101010", 10, 30]} />
 
               <OrbitControls maxPolarAngle={Math.PI / 2} />
-              <Stage environment="city" intensity={0.6} contactShadow={false}>
+              <Stage environment="city" intensity={0.6}>
                 <Suspense fallback={null}>
                   <Model
                     position={[0, -0.6, 0]}
@@ -84,6 +84,7 @@ const CarModel: React.FC = () => {
               <mesh rotation={[-Math.PI / 2, 0, 0]} position-y={-0.5}>
                 <planeGeometry args={[170, 170]} />
                 <MeshReflectorMaterial
+                  mirror={0.5}
                   blur={[300, 100]}
                   resolution={2048}
                   mixBlur={1}

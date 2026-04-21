@@ -2,6 +2,7 @@ import { Suspense, useEffect, useState } from "react";
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls, Stage, useGLTF } from "@react-three/drei";
 import { MeshStandardMaterial } from "three";
+import * as THREE from "three";
 import { Loader } from "lucide-react";
 import Layout from "@/components/Layout";
 import { Input } from "@/components/ui/input";
@@ -11,8 +12,15 @@ interface ApiResponse {
   message?: string;
 }
 
+type TshirtGLTF = {
+  nodes: {
+    T_Shirt_exterieur_ext_0: THREE.Mesh;
+    T_Shirt_int_int_0: THREE.Mesh;
+  };
+};
+
 function TshirtModel({ color }: { color: string }) {
-  const { nodes } = useGLTF("/models/Tshirt.glb") as any;
+  const { nodes } = useGLTF("/models/Tshirt.glb") as unknown as TshirtGLTF;
 
   // Set the material color dynamically for the T-shirt meshes
   const material = new MeshStandardMaterial({ color });
