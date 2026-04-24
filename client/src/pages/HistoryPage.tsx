@@ -125,6 +125,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import Layout from "@/components/Layout";
 import { Loader } from "lucide-react";
+import { API_URLS } from "@/lib/api";
 
 interface ColorData {
   name: string;
@@ -157,7 +158,7 @@ export default function ColorHistory() {
 
   const fetchColorHistory = async () => {
     try {
-      const response = await fetch("/api/user/get-history");
+      const response = await fetch(API_URLS.user.getHistory);
       const data = await response.json();
       if (!response.ok)
         throw new Error(data.message || "Failed to fetch color history");

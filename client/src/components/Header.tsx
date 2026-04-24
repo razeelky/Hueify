@@ -18,7 +18,7 @@
 
 //   const handleSignout = async () => {
 //     try {
-//       const res = await fetch("/api/auth/sign-out", { method: "POST" });
+//       const res = await fetch(API_URLS.auth.signOut, { method: "POST" });
 //       if (res.ok) {
 //         logout();
 //         navigate("/sign-in");
@@ -111,7 +111,7 @@
 
 //   const handleSignout = async () => {
 //     try {
-//       const res = await fetch("/api/auth/sign-out", { method: "POST" });
+//       const res = await fetch(API_URLS.auth.signOut, { method: "POST" });
 //       if (res.ok) {
 //         logout();
 //         navigate("/sign-in");
@@ -242,6 +242,7 @@ import { Popover, PopoverContent, PopoverTrigger } from "./ui/popover";
 import { ModeToggle } from "./mode-toggle";
 import { useTheme } from "./theme-provider";
 import logo from "@/assets/logo.jpg";
+import { API_URLS } from "@/lib/api";
 
 
 const Header = ({ varient }: { varient?: "dark" | "light" }) => {
@@ -262,7 +263,7 @@ const Header = ({ varient }: { varient?: "dark" | "light" }) => {
 
   const handleSignout = async () => {
     try {
-      const res = await fetch("/api/auth/sign-out", { method: "POST" });
+      const res = await fetch(API_URLS.auth.signOut, { method: "POST" });
       if (res.ok) {
         logout();
         navigate("/sign-in");

@@ -572,6 +572,7 @@ import { AlertCircle, ImageUp, Loader } from "lucide-react";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import Layout from "@/components/Layout";
 import { usePDF } from "react-to-pdf";
+import { API_URLS } from "@/lib/api";
 
 interface Color {
   name: string;
@@ -676,7 +677,7 @@ export default function ColorPaletteApp() {
 
   useEffect(() => {
     const addToHistory = async () => {
-      const res = await fetch("/api/user/color-history", {
+      const res = await fetch(API_URLS.user.colorHistory, {
         headers: {
           "Content-Type": "application/json",
         },

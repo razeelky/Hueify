@@ -6,6 +6,7 @@ import * as THREE from "three";
 import { Loader } from "lucide-react";
 import Layout from "@/components/Layout";
 import { Input } from "@/components/ui/input";
+import { API_URLS } from "@/lib/api";
 
 interface ApiResponse {
   history: string[];
@@ -53,7 +54,7 @@ export default function TShirtColorModel() {
   useEffect(() => {
     const fetchColors = async () => {
       try {
-        const res = await fetch("/api/user/get-history");
+        const res = await fetch(API_URLS.user.getHistory);
         const data: ApiResponse = await res.json();
         if (!res.ok) {
           throw new Error(data.message || "Error fetching color history");

@@ -5,6 +5,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import Header from "@/components/Header";
 import { Link, useNavigate } from "react-router-dom";
+import { API_URLS } from "@/lib/api";
 
 export default function SignUp() {
   const [formData, setFormData] = useState({
@@ -28,7 +29,7 @@ export default function SignUp() {
     setMessage("");
 
     try {
-      const response = await fetch("/api/auth/sign-up", {
+      const response = await fetch(API_URLS.auth.signUp, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

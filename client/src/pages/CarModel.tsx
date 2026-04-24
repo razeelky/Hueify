@@ -6,6 +6,7 @@ import { MeshReflectorMaterial, OrbitControls, Stage } from "@react-three/drei";
 import Configurator from "@/components/Configurator";
 import Layout from "@/components/Layout";
 import { Loader } from "lucide-react";
+import { API_URLS } from "@/lib/api";
 
 interface ApiResponse {
   history: string[];
@@ -39,7 +40,7 @@ const CarModel: React.FC = () => {
   useEffect(() => {
     const fetchColors = async () => {
       try {
-        const res = await fetch("/api/user/get-history");
+        const res = await fetch(API_URLS.user.getHistory);
         const data: ApiResponse = await res.json();
         if (!res.ok) {
           throw new Error(data.message || "Error fetching color history");
