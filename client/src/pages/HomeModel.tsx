@@ -233,7 +233,10 @@ import * as THREE from "three";
 import { Loader } from "lucide-react";
 import Layout from "@/components/Layout";
 import { Input } from "@/components/ui/input";
+<<<<<<< HEAD
 import { API_URLS } from "@/lib/api";
+=======
+>>>>>>> c6cae2b (Save current Hueify updates)
 
 interface ApiResponse {
   history: string[];
@@ -296,7 +299,11 @@ export default function HomeModelPage() {
     const fetchColors = async () => {
       try {
         setIsLoading(true);
+<<<<<<< HEAD
         const res = await fetch(API_URLS.user.getHistory);
+=======
+        const res = await fetch("/api/user/get-history");
+>>>>>>> c6cae2b (Save current Hueify updates)
         const data: ApiResponse = await res.json();
         if (!res.ok) throw new Error(data.message || "Error fetching color history");
         setColorsHistory(data.history || []);

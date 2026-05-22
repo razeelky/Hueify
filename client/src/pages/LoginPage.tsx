@@ -13,7 +13,10 @@ import { Link, useNavigate } from "react-router-dom";
 import Header from "@/components/Header";
 import { useUser } from "@/context/userContext";
 import Footer from "@/components/Footer";
+<<<<<<< HEAD
 import { API_URLS } from "@/lib/api";
+=======
+>>>>>>> c6cae2b (Save current Hueify updates)
 
 export default function LoginPage() {
   const [email, setEmail] = useState("");
@@ -29,7 +32,11 @@ export default function LoginPage() {
 
     try {
       setMessage("");
+<<<<<<< HEAD
       const response = await fetch(API_URLS.auth.signIn, {
+=======
+      const response = await fetch("/api/auth/sign-in", {
+>>>>>>> c6cae2b (Save current Hueify updates)
         method: "POST",
         headers: {
           "Content-Type": "application/json",

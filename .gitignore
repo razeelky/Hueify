@@ -7,6 +7,7 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
+<<<<<<< HEAD
 node_modules
 **/node_modules
 dist
@@ -29,3 +30,21 @@ dist-ssr
 .env
 .env.*
 !.env.example
+=======
+node_modules
+dist
+dist-ssr
+*.local
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+.env
+>>>>>>> c6cae2b (Save current Hueify updates)

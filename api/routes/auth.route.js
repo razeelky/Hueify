@@ -8,3 +8,12 @@ app.post('/sign-in', userSignIn);
 app.post('/sign-out', userSignOut);
 
 export default app;
+
+const router = express.Router();
+
+router.post('/sign-up', userSignUp);
+router.post('/sign-in', userSignIn);
+router.post('/sign-out', userSignOut);
+
+export default router;
+

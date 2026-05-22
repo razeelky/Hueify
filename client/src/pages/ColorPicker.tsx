@@ -572,7 +572,10 @@ import { AlertCircle, ImageUp, Loader } from "lucide-react";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import Layout from "@/components/Layout";
 import { usePDF } from "react-to-pdf";
+<<<<<<< HEAD
 import { API_URLS } from "@/lib/api";
+=======
+>>>>>>> c6cae2b (Save current Hueify updates)
 
 interface Color {
   name: string;
@@ -677,7 +680,11 @@ export default function ColorPaletteApp() {
 
   useEffect(() => {
     const addToHistory = async () => {
+<<<<<<< HEAD
       const res = await fetch(API_URLS.user.colorHistory, {
+=======
+      const res = await fetch("/api/user/color-history", {
+>>>>>>> c6cae2b (Save current Hueify updates)
         headers: {
           "Content-Type": "application/json",
         },

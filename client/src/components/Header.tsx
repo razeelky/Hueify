@@ -18,7 +18,11 @@
 
 //   const handleSignout = async () => {
 //     try {
+<<<<<<< HEAD
 //       const res = await fetch(API_URLS.auth.signOut, { method: "POST" });
+=======
+//       const res = await fetch("/api/auth/sign-out", { method: "POST" });
+>>>>>>> c6cae2b (Save current Hueify updates)
 //       if (res.ok) {
 //         logout();
 //         navigate("/sign-in");
@@ -111,7 +115,11 @@
 
 //   const handleSignout = async () => {
 //     try {
+<<<<<<< HEAD
 //       const res = await fetch(API_URLS.auth.signOut, { method: "POST" });
+=======
+//       const res = await fetch("/api/auth/sign-out", { method: "POST" });
+>>>>>>> c6cae2b (Save current Hueify updates)
 //       if (res.ok) {
 //         logout();
 //         navigate("/sign-in");
@@ -235,20 +243,34 @@
 
 // export default Header;
 
+<<<<<<< HEAD
+=======
+import React, { useState, useEffect } from "react";
+>>>>>>> c6cae2b (Save current Hueify updates)
 import { useUser } from "@/context/userContext";
 import { Link, useNavigate } from "react-router-dom";
 import { Button } from "./ui/button";
 import { Popover, PopoverContent, PopoverTrigger } from "./ui/popover";
 import { ModeToggle } from "./mode-toggle";
 import { useTheme } from "./theme-provider";
+<<<<<<< HEAD
 import logo from "@/assets/logo.jpg";
 import { API_URLS } from "@/lib/api";
+=======
+import logo from "@/assets/logo.jpg";
+import * as Dialog from "@radix-ui/react-dialog";
+>>>>>>> c6cae2b (Save current Hueify updates)
 
 
 const Header = ({ varient }: { varient?: "dark" | "light" }) => {
   const { theme } = useTheme();
   const { user, logout } = useUser();
   const navigate = useNavigate();
+<<<<<<< HEAD
+=======
+  const [mobileOpen, setMobileOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+>>>>>>> c6cae2b (Save current Hueify updates)
 
   // Prioritize varient prop if provided, otherwise use theme context
   const appliedTheme = varient || theme;
@@ -263,7 +285,11 @@ const Header = ({ varient }: { varient?: "dark" | "light" }) => {
 
   const handleSignout = async () => {
     try {
+<<<<<<< HEAD
       const res = await fetch(API_URLS.auth.signOut, { method: "POST" });
+=======
+      const res = await fetch("/api/auth/sign-out", { method: "POST" });
+>>>>>>> c6cae2b (Save current Hueify updates)
       if (res.ok) {
         logout();
         navigate("/sign-in");
@@ -275,15 +301,29 @@ const Header = ({ varient }: { varient?: "dark" | "light" }) => {
     }
   };
 
+<<<<<<< HEAD
   return (
     <header
       className={`${
         effectiveTheme === "light" ? "text-black" : "text-white"
       } w-full h-14 px-14 flex items-center justify-between bg-transparent`}
+=======
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 8);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  return (
+    <header
+      className={`${effectiveTheme === "light" ? "text-black" : "text-white"} w-full h-14 px-4 sm:px-6 lg:px-8 flex items-center justify-between bg-transparent transition-shadow duration-200 ${scrolled ? 'sticky top-0 z-50 bg-white/70 dark:bg-neutral-900/60 shadow-sm backdrop-blur' : ''}`}
+>>>>>>> c6cae2b (Save current Hueify updates)
     >
       {/* <Link to={"/"} className="text-2xl font-semibold">
       Huiefy
       </Link> */}
+<<<<<<< HEAD
       <Link to={"/"} className="flex items-center gap-3 text-2xl font-semibold">
            {/* Logo Image */}
          <img src={logo} alt="Huiefy Logo" className="h-10 w-auto dark:invert" />
@@ -294,6 +334,80 @@ const Header = ({ varient }: { varient?: "dark" | "light" }) => {
 
 
       <div className="gap-14 flex font-semibold">
+=======
+      <div className="flex items-center gap-3 text-2xl font-semibold">
+        <Link to={"/"} className="flex items-center gap-3">
+          {/* Logo Image */}
+          <img src={logo} alt="Huiefy Logo" className="h-8 sm:h-10 w-auto dark:invert" />
+          {/* Brand Name */}
+          <span className="text-lg sm:text-2xl">Huiefy</span>
+        </Link>
+
+        {/* Mobile menu button (Radix Dialog Trigger) */}
+        <Dialog.Root open={mobileOpen} onOpenChange={setMobileOpen}>
+          <Dialog.Trigger asChild>
+            <button
+              className="ml-2 md:hidden p-2 rounded-md hover:bg-gray-100 dark:hover:bg-neutral-800"
+              aria-label="Toggle menu"
+            >
+              {mobileOpen ? (
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              ) : (
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+              )}
+            </button>
+          </Dialog.Trigger>
+          <Dialog.Portal>
+            <Dialog.Overlay className="fixed inset-0 bg-black/30 z-40 md:hidden" />
+            <Dialog.Content className="fixed top-14 left-0 right-0 z-50 md:hidden bg-white dark:bg-neutral-900 border-t shadow-md transform transition-transform duration-200 will-change-transform">
+              <div className="flex flex-col p-4 gap-3">
+                <Link className="hover:underline" to="/" onClick={() => setMobileOpen(false)}>
+                  Home
+                </Link>
+                <Link className="hover:underline" to="/colors" onClick={() => setMobileOpen(false)}>
+                  Colors
+                </Link>
+                {user && (
+                  <Link className="hover:underline" to="/history" onClick={() => setMobileOpen(false)}>
+                    History
+                  </Link>
+                )}
+                <Link className="hover:underline" to="/3d-car" onClick={() => setMobileOpen(false)}>
+                  3D Car
+                </Link>
+                <Link className="hover:underline" to="/3d-tshirt" onClick={() => setMobileOpen(false)}>
+                  3D Tshirt
+                </Link>
+                <Link className="hover:underline" to="/3d-shoe" onClick={() => setMobileOpen(false)}>
+                  3D Shoe
+                </Link>
+                <Link className="hover:underline" to="/help" onClick={() => setMobileOpen(false)}>
+                  Help & Support
+                </Link>
+                <div className="pt-2 border-t mt-2 flex items-center justify-between">
+                  <ModeToggle />
+                  {user ? (
+                    <Button variant={"outline"} onClick={handleSignout}>
+                      Log Out
+                    </Button>
+                  ) : (
+                    <Link to="/sign-in">Sign In</Link>
+                  )}
+                </div>
+              </div>
+            </Dialog.Content>
+          </Dialog.Portal>
+        </Dialog.Root>
+
+      </div>
+
+
+      <nav className="hidden md:flex gap-14 font-semibold">
+>>>>>>> c6cae2b (Save current Hueify updates)
         <Link className="hover:underline transition-all" to="/">
           Home
         </Link>
@@ -343,7 +457,13 @@ const Header = ({ varient }: { varient?: "dark" | "light" }) => {
             </Link>
           </>
         )}
+<<<<<<< HEAD
       </div>
+=======
+      </nav>
+
+      
+>>>>>>> c6cae2b (Save current Hueify updates)
 
       {user ? (
         <Popover>

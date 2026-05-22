@@ -125,7 +125,10 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import Layout from "@/components/Layout";
 import { Loader } from "lucide-react";
+<<<<<<< HEAD
 import { API_URLS } from "@/lib/api";
+=======
+>>>>>>> c6cae2b (Save current Hueify updates)
 
 interface ColorData {
   name: string;
@@ -158,7 +161,11 @@ export default function ColorHistory() {
 
   const fetchColorHistory = async () => {
     try {
+<<<<<<< HEAD
       const response = await fetch(API_URLS.user.getHistory);
+=======
+      const response = await fetch("/api/user/get-history");
+>>>>>>> c6cae2b (Save current Hueify updates)
       const data = await response.json();
       if (!response.ok)
         throw new Error(data.message || "Failed to fetch color history");

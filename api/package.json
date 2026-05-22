@@ -12,6 +12,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@radix-ui/react-dialog": "^1.1.15",
     "bcrypt": "^5.1.1",
     "bcryptjs": "^2.4.3",
     "cookie-parser": "^1.4.6",
@@ -23,5 +24,11 @@
   },
   "devDependencies": {
     "@types/color-name": "^2.0.0"
+<<<<<<< HEAD
+=======
+  },
+  "overrides": {
+    "jws": "^4.0.1"
+>>>>>>> c6cae2b (Save current Hueify updates)
   }
 }
