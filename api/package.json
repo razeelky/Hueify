@@ -24,11 +24,10 @@
   },
   "devDependencies": {
     "@types/color-name": "^2.0.0"
-<<<<<<< HEAD
-=======
+
   },
   "overrides": {
     "jws": "^4.0.1"
->>>>>>> c6cae2b (Save current Hueify updates)
+
   }
 }

@@ -4,31 +4,32 @@
 
 @layer base {
   :root {
+    /* Base tokens (light) */
     --background: 0 0% 100%;
-    --foreground: 240 10% 3.9%;
+    --foreground: 220 13% 18%;
     --card: 0 0% 100%;
-    --card-foreground: 240 10% 3.9%;
+    --card-foreground: 220 13% 18%;
     --popover: 0 0% 100%;
-    --popover-foreground: 240 10% 3.9%;
-    --primary: 240 5.9% 10%;
+    --popover-foreground: 220 13% 18%;
+    --primary: 269 78% 60%; /* vivid purple */
     --primary-foreground: 0 0% 98%;
-    --secondary: 240 4.8% 95.9%;
-    --secondary-foreground: 240 5.9% 10%;
-    --muted: 240 4.8% 95.9%;
-    --muted-foreground: 240 3.8% 46.1%;
-    --accent: 240 4.8% 95.9%;
-    --accent-foreground: 240 5.9% 10%;
-    --destructive: 0 84.2% 60.2%;
+    --secondary: 340 85% 60%; /* magenta accent */
+    --secondary-foreground: 0 0% 98%;
+    --muted: 220 8% 94%;
+    --muted-foreground: 220 6% 36%;
+    --accent: 45 100% 60%; /* gold accent */
+    --accent-foreground: 220 13% 18%;
+    --destructive: 0 78% 60%;
     --destructive-foreground: 0 0% 98%;
-    --border: 240 5.9% 90%;
-    --input: 240 5.9% 90%;
-    --ring: 240 10% 3.9%;
-    --radius: 0.5rem;
-    --chart-1: 12 76% 61%;
-    --chart-2: 173 58% 39%;
-    --chart-3: 197 37% 24%;
-    --chart-4: 43 74% 66%;
-    --chart-5: 27 87% 67%;
+    --border: 220 8% 90%;
+    --input: 220 8% 96%;
+    --ring: 269 78% 60%;
+    --radius: 0.75rem;
+    --chart-1: 286 80% 55%;
+    --chart-2: 330 80% 50%;
+    --chart-3: 45 100% 60%;
+    --chart-4: 210 80% 50%;
+    --chart-5: 160 60% 45%;
   }
 
   .dark {
@@ -57,62 +58,106 @@
     --chart-4: 280 65% 60%;
     --chart-5: 340 75% 55%;
   }
+
+/* Premium theme override: apply on <html class="premium"> */
+.premium {
+  --background: 264 12% 6%;
+  --foreground: 0 0% 98%;
+  --card: 264 12% 6%;
+  --card-foreground: 0 0% 98%;
+  --popover: 264 12% 6%;
+  --popover-foreground: 0 0% 98%;
+  --primary: 269 76% 58%; /* purple */
+  --primary-foreground: 0 0% 98%;
+  --secondary: 340 85% 60%; /* magenta */
+  --secondary-foreground: 0 0% 98%;
+  --accent: 42 95% 60%; /* warm gold */
+  --muted: 264 12% 12%;
+  --muted-foreground: 0 0% 70%;
+  --destructive: 0 78% 60%;
+  --border: 264 12% 18%;
+  --input: 264 12% 12%;
+  --ring: 269 78% 60%;
+  --radius: 1rem;
+}
 }
 
 @layer base {
   * {
     @apply border-border;
   }
+  html {
+    text-size-adjust: 100%;
+  }
   body {
     @apply bg-background text-foreground;
+    min-width: 320px;
+  }
+  img,
+  video,
+  canvas,
+  svg {
+    max-width: 100%;
   }
 }
 
 
 /* From Uiverse.io by StealthWorm */ 
 .btn {
-  margin-top: 2rem;
-  display: flex;
+  position: relative;
+  margin-top: 0;
+  display: inline-flex;
   justify-content: center;
   align-items: center;
-  width: 13rem;
+  min-width: 12rem;
+  width: min(100%, 24rem);
+  max-width: 24rem;
   overflow: hidden;
-  height: 3rem;
-  background-size: 300% 300%;
+  height: 3.25rem;
+  padding: 0 1.25rem;
+  background-size: 200% 200%;
   cursor: pointer;
-  backdrop-filter: blur(1rem);
-  border-radius: 5rem;
-  transition: 0.5s;
-  animation: gradient_301 5s ease infinite;
-  border: double 4px transparent;
-  background-image: linear-gradient(#212121, #212121),
-    linear-gradient(
-      137.48deg,
-      #ffdb3b 10%,
-      #fe53bb 45%,
-      #8f51ea 67%,
-      #0044ff 87%
-    );
-  background-origin: border-box;
-  background-clip: content-box, border-box;
+  backdrop-filter: blur(8px);
+  border-radius: var(--radius);
+  transition: transform 200ms ease, box-shadow 200ms ease;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+  border: 1px solid rgba(255,255,255,0.06);
+  background-image: linear-gradient(90deg, #7c3aed 0%, #ec4899 100%);
+  color: hsl(var(--primary-foreground));
+}
+
+@media (max-width: 480px) {
+  .btn {
+    min-width: 0;
+    height: 3rem;
+    max-width: 20rem;
+  }
+
+  .btn strong {
+    font-size: 11px;
+    letter-spacing: 4px;
+    text-indent: 4px;
+  }
 }
 
 #container-stars {
   position: absolute;
+  inset: 0;
   z-index: -1;
   width: 100%;
   height: 100%;
   overflow: hidden;
   transition: 0.5s;
   backdrop-filter: blur(1rem);
-  border-radius: 5rem;
+  border-radius: inherit;
 }
 
-strong {
+.btn strong {
   z-index: 2;
   font-family: "Avalors Personal Use";
   font-size: 12px;
   letter-spacing: 5px;
+  text-indent: 5px;
   color: #ffffff;
   text-shadow: 0 0 4px white;
 }
@@ -145,13 +190,12 @@ strong {
 }
 
 .btn:hover {
-  transform: scale(1.1);
+  transform: translateY(-3px) scale(1.02);
 }
 
 .btn:active {
-  border: double 4px #fe53bb;
-  background-origin: border-box;
-  background-clip: content-box, border-box;
+  transform: translateY(0) scale(0.99);
+  border-color: rgba(254, 83, 186, 0.75);
   animation: none;
 }
 

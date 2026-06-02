@@ -28,9 +28,10 @@ export const getAllHistory = async (req, res) => {
 export const addColorHistory = async (req, res) => {
   const { hex } = req.body;
   const userId = req.user.id;
+  const normalizedHex = typeof hex === "string" ? hex.toUpperCase() : hex;
 
   // Validate the hex value format
-  if (!hex || !/^#([0-9A-F]{3}|[0-9A-F]{6})$/i.test(hex)) {
+  if (!normalizedHex || !/^#([0-9A-F]{3}|[0-9A-F]{6})$/i.test(normalizedHex)) {
     return res.status(400).json({
       success: false,
       error: 'A valid hex value is required.',
@@ -45,13 +46,13 @@ export const addColorHistory = async (req, res) => {
       // Create a new history document if the user has no history
       historyDoc = new ColorHistory({
         userId,
-        history: [hex],
+        history: [normalizedHex],
       });
     } else {
       // Check if the color already exists
-      if (!historyDoc.history.includes(hex)) {
+      if (!historyDoc.history.includes(normalizedHex)) {
         // Add the new color to the top of the array
-        historyDoc.history.unshift(hex);
+        historyDoc.history.unshift(normalizedHex);
 
          // Limit the history array to 5 entries
         // if (historyDoc.history.length > 5) {
