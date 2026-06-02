@@ -68,8 +68,8 @@ export default function SignUpPage() {
   return (
     <div className="relative -mx-4 min-h-[calc(100svh-8rem)] overflow-hidden px-4 py-8 sm:-mx-6 sm:px-6 sm:py-12 lg:-mx-8 lg:px-8">
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_15%_18%,rgba(34,211,238,0.22),transparent_28%),radial-gradient(circle_at_82%_18%,rgba(236,72,153,0.22),transparent_24%),radial-gradient(circle_at_50%_95%,rgba(245,158,11,0.16),transparent_30%)]" />
-      <div className="relative mx-auto grid w-full max-w-5xl overflow-hidden rounded-3xl border border-white/10 bg-white/[0.04] shadow-2xl shadow-black/40 backdrop-blur-xl lg:grid-cols-[1.05fr_0.95fr] lg:rounded-[2rem]">
-        <section className="flex items-center justify-center bg-[#120d1f]/80 px-4 py-8 sm:px-10 sm:py-10 lg:px-14">
+      <div className="relative mx-auto grid w-full max-w-5xl overflow-hidden rounded-3xl border border-white/10 bg-white/[0.04] shadow-2xl shadow-black/40 backdrop-blur-xl grid-cols-[1.05fr_0.95fr] rounded-[2rem]">
+        <section className="flex items-center justify-center bg-[#120d1f]/80 px-4 py-8 sm:px-10 sm:py-10 px-14">
           <div className="w-full max-w-md">
             <div className="mb-8">
               <p className="text-sm font-semibold uppercase tracking-[0.28em] text-primary">
@@ -187,7 +187,7 @@ export default function SignUpPage() {
           </div>
         </section>
 
-        <section className="relative hidden min-h-[640px] overflow-hidden bg-gradient-to-br from-amber-300/90 via-pink-600/90 to-violet-800/90 p-10 text-white lg:flex lg:flex-col lg:justify-between">
+        <section className="relative min-h-[640px] overflow-hidden bg-gradient-to-br from-amber-300/90 via-pink-600/90 to-violet-800/90 p-10 text-white flex flex-col justify-between">
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_22%_16%,rgba(34,211,238,0.75),transparent_28%),radial-gradient(circle_at_84%_80%,rgba(132,204,22,0.65),transparent_30%)]" />
           <div className="relative">
             <p className="text-sm font-semibold uppercase tracking-[0.35em] text-white/80">

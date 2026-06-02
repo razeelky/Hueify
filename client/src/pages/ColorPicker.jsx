@@ -194,8 +194,8 @@ export default function ColorPicker() {
         </p>
       </div>
 
-      <div className="grid gap-6 lg:grid-cols-[0.95fr_1.05fr]">
-        <div className="rounded-3xl border border-white/10 bg-white/[0.04] p-4 shadow-2xl shadow-black/30 backdrop-blur sm:p-6 lg:rounded-[2rem]">
+      <div className="grid gap-6 grid-cols-[0.95fr_1.05fr]">
+        <div className="rounded-3xl border border-white/10 bg-white/[0.04] p-4 shadow-2xl shadow-black/30 backdrop-blur sm:p-6 rounded-[2rem]">
           <div
             className="mb-6 flex min-h-56 items-end rounded-[1.5rem] p-4 shadow-inner sm:min-h-72 sm:p-6"
             style={{ backgroundColor: normalizedHex }}
@@ -323,7 +323,7 @@ export default function ColorPicker() {
               A ready-to-use mix of soft, deep, accent, and contrast colors.
             </p>
 
-            <div className="mt-5 grid gap-3 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-5">
+            <div className="mt-5 grid gap-3 grid-cols-5">
               {palette.map((color) => (
                 <button
                   type="button"

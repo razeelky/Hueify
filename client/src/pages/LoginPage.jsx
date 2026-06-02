@@ -46,8 +46,8 @@ export default function LoginPage() {
   return (
     <div className="relative -mx-4 min-h-[calc(100svh-8rem)] overflow-hidden px-4 py-8 sm:-mx-6 sm:px-6 sm:py-12 lg:-mx-8 lg:px-8">
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_15%_18%,rgba(34,211,238,0.22),transparent_28%),radial-gradient(circle_at_82%_18%,rgba(236,72,153,0.22),transparent_24%),radial-gradient(circle_at_50%_95%,rgba(245,158,11,0.16),transparent_30%)]" />
-      <div className="relative mx-auto grid w-full max-w-5xl overflow-hidden rounded-3xl border border-white/10 bg-white/[0.04] shadow-2xl shadow-black/40 backdrop-blur-xl lg:grid-cols-[0.95fr_1.05fr] lg:rounded-[2rem]">
-        <section className="relative hidden min-h-[580px] overflow-hidden bg-gradient-to-br from-cyan-400/90 via-purple-700/90 to-pink-600/90 p-10 text-white lg:flex lg:flex-col lg:justify-between">
+      <div className="relative mx-auto grid w-full max-w-5xl overflow-hidden rounded-3xl border border-white/10 bg-white/[0.04] shadow-2xl shadow-black/40 backdrop-blur-xl grid-cols-[0.95fr_1.05fr] rounded-[2rem]">
+        <section className="relative min-h-[580px] overflow-hidden bg-gradient-to-br from-cyan-400/90 via-purple-700/90 to-pink-600/90 p-10 text-white flex flex-col justify-between">
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_20%,rgba(255,214,0,0.7),transparent_28%),radial-gradient(circle_at_18%_78%,rgba(0,195,255,0.7),transparent_30%)]" />
           <div className="relative">
             <p className="text-sm font-semibold uppercase tracking-[0.35em] text-white/80">

@@ -121,7 +121,7 @@ export default function ColorHistory() {
         <div>
           <h2 className="mb-4 text-xl font-bold text-foreground">Recent Picks</h2>
           {recentColors.length > 0 ? (
-            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+            <div className="grid gap-4 grid-cols-4">
               {recentColors.map((color) => (
                 <ColorCard
                   key={`${color.hex}-${color.savedAt}`}
@@ -145,7 +145,7 @@ export default function ColorHistory() {
               Loading saved colors...
             </p>
           ) : savedColors.length > 0 ? (
-            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+            <div className="grid gap-4 grid-cols-4">
               {savedColors.slice(0, 12).map((hex) => (
                 <ColorCard
                   key={hex}

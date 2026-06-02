@@ -47,7 +47,7 @@ export default function HomeModelPage() {
         </label>
       </div>
 
-      <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_18rem]">
+      <div className="grid gap-6 grid-cols-[minmax(0,1fr)_18rem]">
         <ModelViewer
           color={baseColor}
           meshColors={partColors}
@@ -56,7 +56,7 @@ export default function HomeModelPage() {
           selectable
           url="/models/Home.glb"
         />
-        <div className="rounded-3xl border border-white/10 bg-white/[0.04] p-4 shadow-2xl shadow-black/25 backdrop-blur sm:p-5 lg:sticky lg:top-24 lg:self-start">
+        <div className="rounded-3xl border border-white/10 bg-white/[0.04] p-4 shadow-2xl shadow-black/25 backdrop-blur sm:p-5 sticky top-24 self-start">
           <h2 className="text-lg font-bold text-foreground">House Tools</h2>
           <p className="mt-2 text-sm leading-6 text-muted-foreground">
             Click any visible part of the house, then use a color or history swatch to paint that section.
@@ -69,7 +69,7 @@ export default function HomeModelPage() {
               {selectedPart || "Click a part of the house model"}
             </span>
           </div>
-          <div className="mt-5 grid grid-cols-4 gap-3 sm:grid-cols-8 lg:grid-cols-4">
+          <div className="mt-5 grid grid-cols-4 gap-3">
             {["#F59E0B", "#E5E7EB", "#94A3B8", "#A16207", "#22C55E", "#06B6D4", "#8B5CF6", "#EF4444"].map((preset) => (
               <button
                 type="button"
