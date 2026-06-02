@@ -1,0 +1,13 @@
+{
+  "name": "hueify",
+  "private": true,
+  "version": "0.0.0",
+  "workspaces": [
+    "client",
+    "api"
+  ],
+  "scripts": {
+    "build": "cd client && npm run build",
+    "dev": "cd client && npm run dev"
+  }
+}
