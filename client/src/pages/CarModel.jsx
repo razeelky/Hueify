@@ -61,8 +61,8 @@ export default function CarModel() {
         </div>
       </div>
 
-      <div className="grid gap-6 grid-cols-[18rem_minmax(0,1fr)]">
-        <aside className="space-y-4 rounded-3xl border border-white/10 bg-white/[0.04] p-4 shadow-2xl shadow-black/25 backdrop-blur sm:p-5 sticky top-24 self-start">
+        <div className="grid gap-6 grid-cols-1 md:grid-cols-[20rem_minmax(0,1fr)]">
+          <aside className="space-y-4 rounded-3xl border border-white/10 bg-white/[0.04] p-4 shadow-2xl shadow-black/25 backdrop-blur sm:p-5 sticky top-24 self-start md:self-start">
           <div>
             <h2 className="text-lg font-bold text-foreground">Customize</h2>
             <p className="mt-1 text-sm text-muted-foreground">
